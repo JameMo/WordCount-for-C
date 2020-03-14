@@ -1,0 +1,24 @@
+void line_num(char *file)
+{
+	//查询file.c文件中行数的函数
+	int num = 1;
+	FILE *f;
+	char a;
+	f = fopen(file,"r");
+	if(f!=NULL)	
+	{
+		while(!feof(f))
+		{
+			a = fgetc(f);
+			//换行符为计数标志 
+			if(a=='\n')
+				num++;
+		}	
+	}
+	else
+	{
+		printf("this file does not exist.\n"); 
+	} 
+	fclose(f);
+	printf("line_num:%d\n",num);
+}
