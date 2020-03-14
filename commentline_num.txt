@@ -1,0 +1,33 @@
+void commentline_num(char *file)
+{
+	//查询file.c文件中注释行数的函数
+	int num = 0,flag = 0;
+	FILE* f;
+	char a;
+	f = fopen(file,"r");
+	if(f!=NULL)
+	{
+		while(!feof(f))
+		{
+			a = fgetc(f);
+			//换行时标志归零 
+			if(a=='\n')
+			{
+				flag = 0;
+			}
+			//对注释符进行计数 
+			else if(a=='/')
+			{
+				flag++;
+				if(flag==2)
+					num++;
+			}
+		}
+	}
+	else
+	{
+		printf("this file does not exist.\n");
+	}
+	fclose(f);
+	printf("commentline_num:%d\n",num);
+}
