@@ -1,0 +1,47 @@
+int main(int a,char* arg[])
+{
+	//运行wc.exe的主函数。
+	FILE *f;
+	while(1)
+	{	
+		//判断文件是否存在
+		//对文件作不同的处理 
+		if((f=fopen(arg[2],"r"))==NULL)
+		{
+			if(!strcmp("-s",arg[1]))
+			{
+				traverse_all(arg[2]);	
+			}
+			else
+			{
+				printf("NO FILE NOW\n\n");
+				scanf("%s%s%s",arg[0],arg[1],arg[2]);
+				continue;
+			}	
+		}
+		else if(!strcmp("-c",arg[1]))
+		{
+			char_num(arg[2]);
+		}
+		else if(!strcmp("-w",arg[1]))
+		{
+			word_num(arg[2]);
+		}
+		else if(!strcmp("-l",arg[1]))
+		{
+			char_num(arg[2]);
+		}
+		else if(!strcmp("-a",arg[1]))
+		{
+			blankline_num(arg[2]);
+			codeline_num(arg[2]);
+			commentline_num(arg[2]);
+		}
+		else
+		{
+			printf("Out of specification\n\n");
+		}
+		scanf("%s%s%s",arg[0],arg[1],arg[2]);
+	}
+	return 0;
+}
