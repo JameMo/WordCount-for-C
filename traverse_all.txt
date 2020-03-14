@@ -1,0 +1,21 @@
+void traverse_all(char *file_folder)
+{	
+	//文件夹内所有*.c文件的所有信息 
+	long handle;
+	char *ch;
+	struct _finddata_t fileinfo;
+	handle = _findfirst(file_folder,&fileinfo);
+	if(handle==-1L)
+		return;
+	do
+	{
+		printf("file name:%s\n",fileinfo.name);
+		ch = fun(file_folder,fileinfo.name);
+		char_num(ch);
+		word_num(ch);
+		line_num(ch);
+		blankline_num(ch);
+		codeline_num(ch);
+		commentline_num(ch);
+	}while(!_findnext(handle,&fileinfo));	
+}
