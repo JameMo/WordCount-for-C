@@ -1,0 +1,30 @@
+void word_num(char *file)
+{
+	//查询file.c文件中单词数目的函数
+	int num = 0,flag;
+	FILE *f;
+	char a;
+	f = fopen(file,"r");
+	if(f!=NULL)
+	{
+		while(!feof(f))
+		{
+			a = fgetc(f);
+			//判断字符是否为大小写字母 
+			if((a<='z'&&a>='a')||(a<='Z'&&a>='A'))
+				flag = 1;
+			//计算单词数目 
+			else if(flag)
+			{
+				num++;
+				flag = 0;	
+			}			
+		}
+	 } 
+	 else
+	 {
+		printf("this file does not exist.\n"); 	
+	 }
+	 fclose(f);
+	 printf("word_num:%d\n",num);
+ } 
