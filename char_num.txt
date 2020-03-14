@@ -1,0 +1,23 @@
+void char_num(char *file)
+{
+	//查询file.c文件中字符数目的函数 
+	int num = 0;
+	FILE *f;
+	char a;
+	f = fopen(file,"r");
+	if(f!=NULL)
+	{	
+		while((a = fgetc(f))!=EOF)
+		{	
+			//避开空格、换行、Tab字符 
+			if(a!=' ' && a!='\n' && a!='\t')
+				num++;
+		}
+	}
+	else
+	{
+		printf("this file does not exist.\n");
+	}
+	fclose(f);
+	printf("char_num:%d\n",num);
+}
