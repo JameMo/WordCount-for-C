@@ -1,0 +1,16 @@
+char *fun(char *c1,char *c2)
+{	
+	//将两个字符串进行连接 
+	int i,j;
+	char *ch;
+	for(i=0;c1[i]!='*';i++)
+	{
+		ch[i]=c1[i];
+	}
+	for(j=0;c2[j]!='\0';j++,i++)
+	{
+		ch[i]=c2[j];
+	}
+	ch[i]='\0';
+	return ch;	
+}
