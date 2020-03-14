@@ -1,0 +1,33 @@
+void blankline_num(char *file)
+{
+	//查询file.c文件中空行数的函数
+	int num = 0,count = 0,flag;
+	FILE *f;
+	char a;
+	f = fopen(file,"r");
+	if(f!=NULL)	
+	{
+		while(!feof(f))
+		{
+			a = fgetc(f);
+			//换行时进行判断 
+			if(a=='\n')
+			{
+				//字符少于、等于1和不为注释行时进行计数 
+				if(count<=1&&flag!=2)
+					num++;
+				count = 0;
+			}
+			else if(a!='\t'&&a!=' '&&a!='/')
+				count++;
+			else if(a=='/')
+				flag++;
+		}	
+	}
+	else
+	{
+		printf("this file does not exist.\n"); 
+	} 
+	fclose(f);
+	printf("blankline_num:%d\n",num);	
+}
